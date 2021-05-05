@@ -10,15 +10,15 @@ block content
                 div(id="login-column" class="col-md-6")
                     div(id="login-box" class="col-md-12")
                         form(id="login-form" class="form" action="/login" method="post")
-                            h3(class="text-center text-info") Login
+                            h3(class="text-center text-dark") Login
                             - if(typeof(message) !== 'undefined')
                                 div(class="error") #{message}
                             div(class="form-group")
-                                label(for="username" class="text-info") Username: 
+                                label(for="username" class="text-dark") Username: 
                                 br
                                 input(type="text" name="username" id="username" class="form-control")
                             div(class="form-group")
-                                label(for="password" class="text-info") Password:
+                                label(for="password" class="text-dark") Password:
                                 br
                                 input(type="password" name="password" id="password" class="form-control")
                             div(class="form-group")

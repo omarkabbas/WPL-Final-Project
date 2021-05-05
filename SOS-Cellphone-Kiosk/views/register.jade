@@ -12,14 +12,16 @@ block content
                 div(id="register-column" class="col-md-6")
                     div(id="register-box" class="col-md-12")
                         form(id="register-form" class="form" action="/register" method="post")
-                            h3(class="text-center text-info") Register
+                            h3(class="text-center text-dark") Register
                             div(class="form-group" id="form-username")
-                                label(for="username" class="text-info") Username (Must contain only alphanumeric characters): 
+                                label(for="username" class="text-dark") Username:
                                 br
                                 input(type="text" name="username" id="username" class="form-control")
+                                label(for="username" class="text-info")  (Must contain only alphanumeric characters)
                             div(class="form-group" id="form-password")
-                                label(for="password" class="text-info") Password (Must contain a lowercase letter, uppercase leter, number, and minimum 6 characters):
+                                label(for="password" class="text-dark") Password:
                                 br
                                 input(type="password" name="password" id="password" class="form-control")
+                                label(for="password" class="text-info")  (Minimum 6 characters, and Must contain a lowercase letter, uppercase letter, number )
                             div(class="form-group")
                                 button(type="submit" class="btn btn-primary") Submit

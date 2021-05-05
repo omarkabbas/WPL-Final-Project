@@ -1,0 +1,39 @@
+extends layout
+
+append stylesheets
+    link(rel="stylesheet", href="/stylesheets/products.css")
+
+block content
+    div(class="jumbotron")
+        h1(class="display-4") SOS Cellphone Kiosk
+        p(class="lead") Products
+
+    div(class="container")
+        div(class="row")
+            - products.forEach(function(product){
+                div(class="col-4")
+                    img(src="/images/#{product.cover}" style="width:200px; height:200px;" class="img-thumbnail")
+                    div(class="caption")
+                        a(href=`/products/${product._id}`) #{product.title}
+                    div(class="caption")
+                        p $#{product.price}
+            - })
+
+        div(class="row justify-content-between")
+            -if(nextPage && previousPage){
+                div(class="col-4")
+                    a(href=`/${(typeof(isAll) !== 'undefined' && isAll)?'products/all':'products'}?page=${currentPage-1}` class="btn btn-lg btn-primary") Previous Page
+                div(class="col-4")
+                    a(href=`/${(typeof(isAll) !== 'undefined' && isAll)?'products/all':'products'}?page=${currentPage+1}` class="btn btn-lg btn-primary") Next Page
+            -}
+            -else{
+                - if(nextPage){
+                    div(class="col-md-4 offset-8")
+                        a(href=`/${(typeof(isAll) !== 'undefined' && isAll)?'products/all':'products'}?page=${currentPage+1}` class="btn btn-lg btn-primary") Next Page
+
+                -}
+                - if(previousPage){
+                    div(class="col-4")
+                        a(href=`/${(typeof(isAll) !== 'undefined' && isAll)?'products/all':'products'}?page=${currentPage-1}` class="btn btn-lg btn-primary") Previous Page
+                -}
+            -}

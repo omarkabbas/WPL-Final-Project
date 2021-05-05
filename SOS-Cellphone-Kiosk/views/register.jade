@@ -1,0 +1,25 @@
+extends layout
+
+append jscripts
+    script(src="/scripts/register.js")
+append stylesheets
+    link(rel="stylesheet" href="/stylesheets/register.css")
+
+block content
+    div(id="register")
+        div(class="container")
+            div(id="register-row" class="row justify-content-center allign-items-center")
+                div(id="register-column" class="col-md-6")
+                    div(id="register-box" class="col-md-12")
+                        form(id="register-form" class="form" action="/register" method="post")
+                            h3(class="text-center text-info") Register
+                            div(class="form-group" id="form-username")
+                                label(for="username" class="text-info") Username (Must contain only alphanumeric characters): 
+                                br
+                                input(type="text" name="username" id="username" class="form-control")
+                            div(class="form-group" id="form-password")
+                                label(for="password" class="text-info") Password (Must contain a lowercase letter, uppercase leter, number, and minimum 6 characters):
+                                br
+                                input(type="password" name="password" id="password" class="form-control")
+                            div(class="form-group")
+                                button(type="submit" class="btn btn-primary") Submit

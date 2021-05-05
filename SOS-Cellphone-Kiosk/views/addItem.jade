@@ -1,0 +1,38 @@
+extends layout
+
+append stylesheets
+    link(rel="stylesheet" href="/stylesheets/additem.css")
+
+block content
+    div(class="container")
+        form(action="/api/product" method="POST" enctype="multipart/form-data")
+            div(class="form-group")
+                div
+                label(for="title") Title
+                input(type="text" class="form-control" name="title" id="title" required)
+            div(class="form-group")
+                label(for="category") Category
+                select(class="form-control" name="category" id="category" required)
+                    option(value="Phones") Phones
+                    option(value="Chargers") Chargers
+                    option(value="Cases") Cases
+                    option(value="Headphones") Headphones
+                    option(value="Screen Protectors") Screen Protectors
+            div(class="form-group")
+                label(for="brand") Brand
+                input(type="text" class="form-control" name="brand" id="brand" required)
+            div(class="form-group")
+                label(for="coverImg") Cover image
+                div
+                    input(type="file" class="" name="coverImg" id="coverImg" accept="image/*" required)
+            div(class="form-group")
+                label(for="boxImg") Box image
+                div
+                    input(type="file" class="" name="boxImg" id="boxImg" accept="image/*" required)
+            div(class="form-group")
+                label(for="price") Price
+                input(type="text" class="form-control" name="price" id="price" required)
+            div(class="form-group")
+                label(for="quantity") Quantity
+                input(type="text" class="form-control" name="quantity" id="quantity" required)
+            button(type="submit" class="btn btn-primary") Add Product

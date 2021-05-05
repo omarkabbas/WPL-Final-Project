@@ -1,0 +1,112 @@
+extends layout
+
+append stylesheets
+    link(rel="stylesheet", href="/stylesheets/products.css")
+
+block content
+    
+    -if (typeof(category) !== 'undefined'){
+        - console.log(category)
+        - console.log(searchTerm)
+        script.
+            var category = '#{category}'
+            var search = '#{searchTerm}'
+        script(src='/scripts/search.js')
+    -}
+    - else{
+        script.
+            var search = '#{searchterm}'
+        script(src='/scripts/search.js')
+    -}
+
+    div(class="jumbotron")
+        h1(class="display-4") SOS Cellphone Kiosk
+        p(class="lead") Products
+
+    div(class="container")
+        div(class="row")
+            - products.forEach(function(product){
+                div(class="col-4")
+                    img(src="/images/#{product.cover}" style="width:200px; height:200px;" class="img-thumbnail")
+                    div(class="caption")
+                        a(href=`/products/${product._id}`) #{product.title}
+                    div(class="caption")
+                        p $#{product.price}
+            - })
+
+        div(class="row justify-content-between")
+            -if(nextPage && previousPage){
+                -if (typeof(category) !== 'undefined'){
+                    -if (searchTerm !== ""){
+                        div(class="col-4")
+                            a(href=`/products/search?page=${currentPage-1}&category=${category}&title=${searchTerm}` class="btn btn-lg btn-primary") Previous Page                      
+                        div(class="col-4")
+                            a(href=`/products/search?page=${currentPage+1}&category=${category}&title=${searchTerm}` class="btn btn-lg btn-primary") Next Page
+                    -}
+                    -else{
+                        div(class="col-4")
+                            a(href=`/products/search?page=${currentPage-1}&category=${category}&title=${searchTerm}` class="btn btn-lg btn-primary") Previous Page
+                        div(class="col-4")
+                            a(href=`/products/search?page=${currentPage+1}&category=${category}&title=${searchTerm}` class="btn btn-lg btn-primary") Next Page
+                    -}
+                -}
+                -else{
+                    -if (searchTerm !== ""){
+                        div(class="col-4")
+                            a(href=`/products/search?page=${currentPage-1}&category=${category}&title=${searchTerm}` class="btn btn-lg btn-primary") Previous Page
+                        div(class="col-4")
+                            a(href=`/products/search?page=${currentPage+1}&title=${searchTerm}` class="btn btn-lg btn-primary") Next Page
+                    -}
+                    -else{
+                        div(class="col-4")
+                            a(href=`/products/search?page=${currentPage-1}&category=${category}&title=${searchTerm}` class="btn btn-lg btn-primary") Previous Page
+                        div(class="col-4")
+                            a(href=`/products/search?page=${currentPage+1}&title=${searchTerm}` class="btn btn-lg btn-primary") Next Page
+                    -}
+                -}
+            -}
+            -else{
+                -if(nextPage){
+                    -if (typeof(category) !== 'undefined'){
+                        -if (searchTerm !== ""){
+                        div(class="col-md-4 offset-8")
+                            a(href=`/products/search?page=${currentPage+1}&category=${category}&title=${searchTerm}` class="btn btn-lg btn-primary") Next Page
+                        -}
+                        -else{
+                            div(class="col-md-4 offset-8")
+                                a(href=`/products/search?page=${currentPage+1}&category=${category}&title=${searchTerm}` class="btn btn-lg btn-primary") Next Page
+                        -}
+                    -}
+                    -else{
+                        -if (searchTerm !== ""){
+                            div(class="col-md-4 offset-8")
+                                a(href=`/products/search?page=${currentPage+1}&title=${searchTerm}` class="btn btn-lg btn-primary") Next Page
+                        -}
+                        -else{
+                            div(class="col-md-4 offset-8")
+                                a(href=`/products/search?page=${currentPage+1}&title=${searchTerm}` class="btn btn-lg btn-primary") Next Page
+                        -}
+                    -}
+                -}
+                -if(previousPage){
+                    -if (typeof(category) !== 'undefined'){
+                        -if (searchTerm !== ""){
+                            div(class="col-4")
+                                a(href=`/products/search?page=${currentPage-1}&category=${category}&title=${searchTerm}` class="btn btn-lg btn-primary") Previous Page
+                        -}
+                        -else{
+                            div(class="col-4")
+                                a(href=`/products/search?page=${currentPage-1}&category=${category}&title=${searchTerm}` class="btn btn-lg btn-primary") Previous Page
+                        -}
+                    -}
+                    -else{
+                        -if (searchTerm !== ""){
+                            div(class="col-4")
+                                a(href=`/products/search?page=${currentPage-1}&title=${searchTerm}&title=${searchTerm}` class="btn btn-lg btn-primary") Previous Page
+                            -}
+                        -else{
+                            a(href=`/products/search?page=${currentPage-1}&title=${searchTerm}` class="btn btn-lg btn-primary") Previous Page
+                        -}
+                    -}
+                -}
+            -}

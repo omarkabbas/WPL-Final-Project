@@ -1,0 +1,48 @@
+extends layout
+
+append stylesheets
+    link(rel="stylesheet" href="/stylesheets/updateItem.css")
+
+block content
+
+    script.
+        var category = '#{product.category}'
+    script(src='/scripts/updateItem.js')
+
+    div(class="container")
+        h1(class="update-title") #{title}
+        p
+            img(src=`/images/${product.cover}`)
+        form(action="/api/product?_method=PUT" method="POST" enctype="multipart/form-data")
+            input(type="hidden" value=`${product._id}` name="id")
+            div(class="form-group")
+                label(for="title") Title
+                input(type="text" class="form-control" name="title" id="title" value=`${product.title}` required)
+            div(class="form-group")
+                label(for="category") Category
+                select(class="form-control" name="category" id="category" required)
+                    option(value="Phones") Phones
+                    option(value="Chargers") Chargers
+                    option(value="Cases") Cases
+                    option(value="Headphones") Headphones
+                    option(value="Screen Protectors") Screen Protectors
+            div(class="form-group")
+                label(for="brand") Brand
+                input(type="text" class="form-control" name="brand" id="brand" value=`${product.brand}` required)
+            div(class="form-group")
+                label(for="coverImg") Cover image
+                div
+                    input(type="file" class="" name="coverImg" id="coverImg" accept="image/*")
+            div(class="form-group")
+                label(for="boxImg") Box image
+                div
+                    input(type="file" class="" name="boxImg" id="boxImg" accept="image/*")
+            div(class="form-group")
+                label(for="price") Price
+                input(type="text" class="form-control" name="price" id="price" value=`${product.price}` required)
+            div(class="form-group")
+                label(for="quantity") Quantity
+                input(type="text" class="form-control" name="quantity" id="quantity" value=`${product.quantity}` required)
+            button(type="submit" class="btn btn-primary") Edit Product
+    
+    

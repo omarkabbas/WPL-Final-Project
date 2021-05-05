@@ -1,0 +1,28 @@
+img{
+    height: 100px;
+    width: 100px;
+}
+
+.order-date{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+h4{
+    margin-bottom: 20px;
+}
+
+.product-entry{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.total-price{
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.shopping-title{
+    margin-top: 20px;
+    margin-bottom: 20px
+}

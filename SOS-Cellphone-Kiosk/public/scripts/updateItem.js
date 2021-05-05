@@ -1,0 +1,4 @@
+$(function(){
+
+    $("#category").val(category)  
+})

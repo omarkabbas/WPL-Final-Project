@@ -1,0 +1,113 @@
+extends layout
+
+append stylesheets
+    link(rel="stylesheet", href="/stylesheets/cart.css")
+
+block content
+    div(class="container")
+    
+        -if(typeof(isHistory) !== 'undefined' && isHistory){
+            -if(historyLength === 0){
+                p No purchases
+            -}
+            -else{
+                div(class="heading")
+                h3(class="order-date") Order Purchased On #{cart.purchaseTime}
+                div(class="table")
+                    div(class="layout-inline row th")
+                        div(class="col col-pro") 
+                            h4 Product
+                        div(class="col col-price align-center") 
+                            h4 Name
+                        div(class="col col-price align-center") 
+                            h4 Price
+                        div(class="col col-qty align-center") 
+                            h4 QTY
+                    -for(let i=0; i <cart.list.length; i++){
+                        div(class="layout-inline row product-entry")
+                            div(class="col layout-inline")
+                                img(src=`/images/${images[i]}`)
+                            div(class="col layout-inline")
+                                p #{cart.list[i].name}
+                            div(class="col col-price align-center")
+                                p $#{cart.list[i].price}
+                            div(class="col col-qty layout-inline")
+                                p #{cart.list[i].quantity}
+                            form(action=`/cart/edit` method="GET")
+                                input(type="hidden" name="id" value=`${cart.list[i].productID}`)
+                            form(action="/cart?_method=DELETE" method="POST")
+                                input(type="hidden" name="id" value=`${cart.list[i].productID}`)
+                            hr
+                    -}
+                    div(class="row layout-inline total-price")
+                        p Total Price: $#{cart.total.toFixed(2)}
+                div(class="row justify-content-between")
+                    -if(nextPage && previousPage){
+                        div(class="col-4")
+                            a(href=`/history/?page=${currentPage-1}` class="btn btn-lg btn-primary") Previous Order
+                        div(class="col-4")
+                            a(href=`/history/?page=${currentPage+1}` class="btn btn-lg btn-primary") Next Order
+                    -}
+                    -else{
+                        - if(nextPage){
+                            div(class="col-md-4 offset-8")
+                                a(href=`/history/?page=${currentPage+1}` class="btn btn-lg btn-primary") Next Order
+
+                        -}
+                        - if(previousPage){
+                            div(class="col-4")
+                                a(href=`/history/?page=${currentPage-1}` class="btn btn-lg btn-primary") Previous Order
+                        -}
+                    -}
+            -}
+        -}
+        -else{
+            -if(typeof(error) !== 'undefined'){
+            p One of your items is out of stock
+        -}
+
+        div(class="heading")
+            h1(class="shopping-title") Shopping Cart
+            -if(cart.list.length === 0){
+                h3 Cart is empty
+            -}
+            -else{
+                div(class="table")
+                    div(class="layout-inline row th")
+                        div(class="col col-pro") 
+                            h4 Product
+                        div(class="col col-price align-center") 
+                            h4 Price
+                        div(class="col col-name allign-center") 
+                            h4 Name
+                        div(class="col col-qty align-center") 
+                            h4 QTY
+                        div(class="col align-center")
+                    - for(let i=0; i <cart.list.length; i++){
+                        div(class="layout-inline row product-entry")
+                            div(class="col layout-inline")
+                                img(src=`/images/${images[i]}`)
+                            div(class="col layout-inline")
+                                p #{cart.list[i].name}
+                            div(class="col col-price align-center")
+                                p $#{cart.list[i].price}
+                            div(class="col col-qty layout-inline")
+                                p #{cart.list[i].quantity}
+                            div(class="col layout-inline")
+                                form(action=`/cart/edit` method="GET")
+                                    input(type="hidden" name="id" value=`${cart.list[i].productID}`)
+                                    button(type="submit" class="btn btn-primary" ) Edit
+                                form(action="/cart?_method=DELETE" method="POST")
+                                    input(type="hidden" name="id" value=`${cart.list[i].productID}`)
+                                    button(type="submit" class="btn btn-danger") Remove item
+                            hr
+                    -}
+                    div(class="row layout-inline total-price")
+                        p Total Price: $#{cart.total.toFixed(2)}
+                form(id="checkout-form" class="form" action="/checkout" method="post")
+                    div(class="form-group")
+                        button(type="submit" class="btn btn-primary") Checkout
+            -}
+        -}
+
+    

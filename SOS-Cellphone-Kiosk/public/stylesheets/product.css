@@ -1,0 +1,41 @@
+img{
+    width: 400px;
+    height: 400px;
+}
+
+.product-info{
+    padding-top: 30px;
+}
+
+hr{
+    display: block;
+    position: relative;
+    padding: 0;
+    margin: 8px auto;
+    height: 0;
+    width: 100%;
+    max-height: 0;
+    font-size: 1px;
+    line-height: 0;
+    clear: both;
+    border: none;
+    border-top: 1px solid #aaaaaa;
+    border-bottom: 1px solid #ffffff;
+ }
+
+ #update{
+    padding-top: 20px;
+ }
+
+ #delete{
+    padding-top: 20px;
+ }
+
+ #add-cart{
+    margin-left: 20px;
+ }
+
+ .product-title{
+     margin-top: 20px;
+     margin-bottom: 20px;
+ }

@@ -1,0 +1,11 @@
+{
+    "_id" : ObjectId("6091f40224170068ac1bf912"),
+    "username" : "test123",
+    "password" : "07480fb9e85b9396af06f006cf1c95024af2531c65fb505cfbd0add1e2f31573",
+    "cart" : {
+        "list" : [],
+        "total" : 0
+    },
+    "purchaseHistory" : [],
+    "isAdmin" : true
+}

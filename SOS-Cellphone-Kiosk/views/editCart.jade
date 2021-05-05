@@ -1,0 +1,21 @@
+extend layout
+
+append stylesheets
+    link(rel="stylesheet" href="/stylesheets/editCart.css")
+
+block content
+
+    div(class="container")
+        p
+            img(src=`/images/${cover}`)
+        h1 #{name}
+        form(action="/cart?_method=PUT" method="POST")
+            div(class="form-group")
+                input(type="hidden" id="id" name="id" value=`${id}`)
+                select(class="form-control" id="quantity" name="quantity")
+                    - for(let i=1; i<= stockQuantity; i++){
+                        option(value=`${i}`) #{i}
+                    -}
+            button(type="submit" class="btn btn-primary") Update
+
+        

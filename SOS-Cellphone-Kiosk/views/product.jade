@@ -1,0 +1,50 @@
+extends layout
+
+append stylesheets
+    link(rel="stylesheet" href="/stylesheets/product.css")
+
+block content
+    div(class="container")
+        h1(class="product-title") Product Information
+        div(class="row")
+            div(class="col-5")        
+                p
+                    img(src=`/images/${product.box}` alt=`product-box-image`)
+            div(class="col-5")
+                h3 #{product.title}
+                hr
+                div(class="product-info")
+                    h5 Category: #{product.category}
+                    h5 Brand: #{product.brand}
+                    h5 Price: $#{product.price}
+                    - if(product.quantity > 0){
+                        h5(class="text-warning") Only #{product.quantity} left
+                    -}
+                    - else{
+                        h5(class="text-danger") Out of Stock
+                    -}
+                    -if(typeof(username) !== 'undefined' && product.quantity > 0){
+                        form(action='/cart' method="POST")
+                            div(class="form-group")
+                            input(type="hidden" id="id" name="id" value=`${product._id}`)
+                            label(for="quantity") Quantity
+                            select(name="quantity" id="quantity")
+                                -for(let i=1; i<= product.quantity; i++)
+                                    option(value=`${i}`) #{i}
+                            button(type="submit" class="btn btn-primary" id="add-cart") Add to Cart
+                    -}
+        div(class="row")
+            div(class="col")
+                a(class="btn btn-primary" href="/products" role="button") Back to Products
+
+        -if(typeof(isAdmin) !== 'undefined' && isAdmin){
+            div(class="row")
+                div(class="col" id="update")  
+                    a(class="btn btn-primary" href=`/admin/updateItem?id=${product._id}` role="button") Update
+            div(class="row")
+                div(class="col" id="delete")  
+                    form(action=`/api/product/?_method=DELETE` method="POST")
+                        div(class="form-group")
+                            input(type="hidden" id="id" name="id" value=`${product._id}`)
+                            button(type="submit" class="btn btn-danger") Delete
+        -}    

@@ -1,0 +1,11 @@
+{
+    "_id" : ObjectId("6091fe74e973fe7ffef3ae1f"),
+    "title" : "OnePlus 9 Pro 5G",
+    "category" : "Phones",
+    "brand" : "Oneplus",
+    "quantity" : 12,
+    "cover" : "op9pro-cover.jpg",
+    "box" : "op9pro-box.jpg",
+    "price" : 1069.99,
+    "soft-delete" : false
+}

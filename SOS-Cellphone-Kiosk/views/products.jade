@@ -7,33 +7,47 @@ block content
     div(class="jumbotron")
         h1(class="display-4") Welcome to SOS Cellphone Kiosk!
         p(class="lead") Products
+        
 
-    div(class="container")
+    div(class="container justify-content-around")
         div(class="row")
-            - products.forEach(function(product){
-                div(class="col-4")
-                    img(src="/images/#{product.cover}" style="width:200px; height:200px;" class="img-thumbnail")
-                    div(class="caption")
-                        a(href=`/products/${product._id}`) #{product.title}
-                    div(class="caption")
-                        p $#{product.price}
-            - })
+            div(class="col-3")
+                form(class="form my-2 my-lg-0" action="/products/search" id="search-form")
+                    select(id="category" name="category" class="form-control my-2")
+                        option(value="default" selected) All
+                        option(value="Phones") Phones
+                        option(value="Chargers") Chargers
+                        option(value="Cases") Cases
+                        option(value="Headphones") Headphones
+                        option(value="Screen Protectors") Screen Protectors
+                    input(id="title" name="title" class="form-control mr-sm-2 my-1" type="search" placeholder="Search Product" aria-label="Search")
+                    button(class="btn btn-outline-primary my-2 my-sm-0" type="submit") Search
+            div(class="col")
+                div(class="row")
+                    - products.forEach(function(product){
+                        div(class="col-4")
+                            img(src="/images/#{product.cover}" style="width:200px; height:200px;" class="img-thumbnail")
+                            div(class="caption")
+                                a(href=`/products/${product._id}`) #{product.title}
+                            div(class="caption")
+                                p $#{product.price}
+                    - })
 
-        div(class="row justify-content-between")
-            -if(nextPage && previousPage){
-                div(class="col-4")
-                    a(href=`/${(typeof(isAll) !== 'undefined' && isAll)?'products/all':'products'}?page=${currentPage-1}` class="btn btn-lg btn-primary") Previous Page
-                div(class="col-4")
-                    a(href=`/${(typeof(isAll) !== 'undefined' && isAll)?'products/all':'products'}?page=${currentPage+1}` class="btn btn-lg btn-primary") Next Page
-            -}
-            -else{
-                - if(nextPage){
-                    div(class="col-md-4 offset-8")
-                        a(href=`/${(typeof(isAll) !== 'undefined' && isAll)?'products/all':'products'}?page=${currentPage+1}` class="btn btn-lg btn-primary") Next Page
+                div(class="row justify-content-between")
+                    -if(nextPage && previousPage){
+                        div(class="col-4")
+                            a(href=`/${(typeof(isAll) !== 'undefined' && isAll)?'products/all':'products'}?page=${currentPage-1}` class="btn  btn-primary") Previous Page
+                        div(class="col-4")
+                            a(href=`/${(typeof(isAll) !== 'undefined' && isAll)?'products/all':'products'}?page=${currentPage+1}` class="btn blue-gradient btn-primary") Next Page
+                    -}
+                    -else{
+                        - if(nextPage){
+                            div(class="col-md-4 offset-8")
+                                a(href=`/${(typeof(isAll) !== 'undefined' && isAll)?'products/all':'products'}?page=${currentPage+1}` class="btn blue-gradient btn-primary") Next Page
 
-                -}
-                - if(previousPage){
-                    div(class="col-4")
-                        a(href=`/${(typeof(isAll) !== 'undefined' && isAll)?'products/all':'products'}?page=${currentPage-1}` class="btn btn-lg btn-primary") Previous Page
-                -}
-            -}
+                        -}
+                        - if(previousPage){
+                            div(class="col-4")
+                                a(href=`/${(typeof(isAll) !== 'undefined' && isAll)?'products/all':'products'}?page=${currentPage-1}` class="btn blue-gradient btn-primary") Previous Page
+                        -}
+                    -}

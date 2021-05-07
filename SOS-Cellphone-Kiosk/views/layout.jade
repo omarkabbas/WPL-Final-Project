@@ -10,20 +10,11 @@ html
       link(rel="icon" href="/favicon/favicon.jpg")
     title= title
   body
-      nav(class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between")
-        div(class="collapse navbar-collapse" id="navbarNav")
+      nav(class="navbar navbar-expand-sm navbar-dark bg-dark justify-content-between")
+        div(class="navbar-header navbar-collapse justify-content-between" id="navbarNav")
           a(class="navbar-brand" href="/products") 
             i(class="fas fa-mobile-alt")   SOS Cellphone Kiosk
-          form(class="form-inline my-2 my-lg-0" action="/products/search" id="search-form")
-            select(id="category" name="category" class="form-control mx-3")
-              option(value="default" selected) All
-              option(value="Phones") Phones
-              option(value="Chargers") Chargers
-              option(value="Cases") Cases
-              option(value="Headphones") Headphones
-              option(value="Screen Protectors") Screen Protectors
-            input(id="title" name="title" class="form-control mr-sm-2" type="search" placeholder="Search Product" aria-label="Search")
-            button(class="btn btn-outline-primary my-2 my-sm-0" type="submit") Search
+          
           div(class="navbar-nav")
             - if (typeof(username) === 'undefined')
                 a(class="nav-item nav-link mx-3" href="/products") Products
@@ -44,3 +35,7 @@ html
 
       
     block content
+
+    block footer
+
+    include footer

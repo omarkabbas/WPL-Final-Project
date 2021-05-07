@@ -5,3 +5,13 @@ span{
 .navbar.text{
     color:#FFFFFF;
 }
+
+.btn-primary{
+    background:linear-gradient(.25turn,#0274d88c,#0275d8 );
+    outline:none;
+    }
+
+.bg-dark{
+    
+    background:linear-gradient(.25turn,#292b2c,#626769 );
+}

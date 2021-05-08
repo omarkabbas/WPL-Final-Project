@@ -1,8 +1,10 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #07b0ce;
     height: 100vh;
+    background-color: #11242ebe;
+    background-image: url(/images/clipart.png);
+    background-size: 100px 100px;
 }
 
 #login .container #login-row #login-column #login-box {

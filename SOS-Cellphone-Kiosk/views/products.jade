@@ -5,11 +5,11 @@ append stylesheets
 
 block content
     div(class="jumbotron")
-        h1(class="display-4") Welcome to SOS Cellphone Kiosk!
-        p(class="lead") Products
+        h1(class="display-4 " style="font-weight: bold;") Welcome to <br/> SOS Cellphone Kiosk!
+        p(class="lead" style="font-weight: bold;") Products
         
 
-    div(class="container justify-content-around")
+    div(class="container justify-content-around my-2")
         div(class="row")
             div(class="col-3")
                 form(class="form my-2 my-lg-0" action="/products/search" id="search-form")
@@ -42,7 +42,7 @@ block content
                     -}
                     -else{
                         - if(nextPage){
-                            div(class="col-md-4 offset-8")
+                            div(class="col-md-4 offset-9")
                                 a(href=`/${(typeof(isAll) !== 'undefined' && isAll)?'products/all':'products'}?page=${currentPage+1}` class="btn blue-gradient btn-primary") Next Page
 
                         -}
@@ -51,3 +51,7 @@ block content
                                 a(href=`/${(typeof(isAll) !== 'undefined' && isAll)?'products/all':'products'}?page=${currentPage-1}` class="btn blue-gradient btn-primary") Previous Page
                         -}
                     -}
+
+footer(class="pt-4 border-top")
+    div(class="row")
+        span(class="text-muted") blah blah      

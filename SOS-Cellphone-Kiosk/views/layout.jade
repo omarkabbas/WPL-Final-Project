@@ -9,8 +9,8 @@ html
       link(rel="stylesheet", href="/stylesheets/layout.css")
       link(rel="icon" href="/favicon/favicon.jpg")
     title= title
-  body
-      nav(class="navbar navbar-expand-sm navbar-dark bg-dark justify-content-between")
+  body(class="d-flex flex-column min-vh-100")
+      nav(class="navbar navbar-expand-sm navbar-dark bg-dark justify-content-between ")
         div(class="navbar-header navbar-collapse justify-content-between" id="navbarNav")
           a(class="navbar-brand" href="/products") 
             i(class="fas fa-mobile-alt")   SOS Cellphone Kiosk
@@ -33,9 +33,11 @@ html
                 
                 a(class="nav-item nav-link mx-3" href="/logout") Logout
 
-      
     block content
 
-    block footer
+  footer(class="mt-auto py-4  bg-dark")
+        div(class="row justify-content-center")
+            span(class="text " ) Contact us <br/> email@email.com
 
-    include footer
+
+

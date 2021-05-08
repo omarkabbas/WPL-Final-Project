@@ -4,5 +4,12 @@
 }
 
 .jumbotron{
-    background-color: #e7e7e7;
+    background-color: #11242e71;
+    background-image: url(/images/clipart.png);
+    background-size: 100px 100px;
+}
+
+h1{
+    font-weight: bold;
+
 }

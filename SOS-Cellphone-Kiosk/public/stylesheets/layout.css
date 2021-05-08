@@ -7,11 +7,17 @@ span{
 }
 
 .btn-primary{
-    background:linear-gradient(.25turn,#0274d88c,#0275d8 );
+    background:linear-gradient(.25turn,#11242e,#0275d8 );
     outline:none;
     }
 
 .bg-dark{
     
-    background:linear-gradient(.25turn,#292b2c,#626769 );
+    background:linear-gradient(.25turn,#11242e,#626769 );
+}
+
+footer{
+    color:#FFFFFF;
+    text-align:center;
+      
 }

@@ -16,10 +16,10 @@ router.get('/all', function(req,res,next){
             currentPage = 1;
         else
             currentPage = parseInt(req.query.page);
-        let result = products.slice((currentPage-1)*3, currentPage*3);
+        let result = products.slice((currentPage-1)*9, currentPage*9);
         let nextPage = true;
         let previousPage = false;
-        if(currentPage*3 >= products.length)
+        if(currentPage*9 >= products.length)
             nextPage = false;
         if(currentPage > 1)
             previousPage = true;
@@ -37,10 +37,10 @@ router.get('/', function(req, res, next){
             currentPage = 1;
         else
             currentPage = parseInt(req.query.page);
-        let result = products.slice((currentPage-1)*3, currentPage*3);
+        let result = products.slice((currentPage-1)*9, currentPage*9);
         let nextPage = true;
         let previousPage = false;
-        if(currentPage*3 >= products.length)
+        if(currentPage*9 >= products.length)
             nextPage = false;
         if(currentPage > 1)
             previousPage = true;
@@ -67,10 +67,10 @@ router.get('/search', function(req,res,next){
             currentPage = 1;
         else
             currentPage = parseInt(req.query.page);
-        let result = products.slice((currentPage-1)*3, currentPage*3);
+        let result = products.slice((currentPage-1)*9, currentPage*9);
         let nextPage = true;
         let previousPage = false;
-        if(currentPage*3 >= products.length)
+        if(currentPage*9 >= products.length)
             nextPage = false;
         if(currentPage > 1)
             previousPage = true;
